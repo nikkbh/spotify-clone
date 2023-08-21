@@ -3,9 +3,22 @@
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
 
+import useAuthModel from "@/hooks/useAuthModal";
+import useUploadModel from "@/hooks/useUploadModal";
+import { useUser } from "@/hooks/useUser";
+
 const Library = () => {
+  const authModel = useAuthModel();
+  const uploadModal = useUploadModel();
+  const { user } = useUser();
+
   const onClick = () => {
-    // Handle upload later
+    if (!user) {
+      return authModel.onOpen();
+    }
+    // TODO: Chekc for stripe subsricption
+
+    return uploadModal.onOpen();
   };
   return (
     <div className="flex flex-col">
