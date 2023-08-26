@@ -8,6 +8,7 @@ import { twMerge } from "tailwind-merge";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { FaUserAlt } from "react-icons/fa";
 import { toast } from "react-hot-toast";
+import { TbPlaylist } from "react-icons/tb";
 
 import useAuthModel from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
@@ -88,6 +89,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
         </div>
         <div className="flex md:hidden gap-x-2 items-center">
           <button
+            onClick={() => router.push("/")}
             className="
                 rounded-full
                 p-2
@@ -101,6 +103,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             <HiHome size={20} className="text-black" />
           </button>
           <button
+            onClick={() => router.push("/search")}
             className="
                 rounded-full
                 p-2
@@ -112,6 +115,20 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                 transition"
           >
             <BiSearch size={20} className="text-black" />
+          </button>
+          <button
+            onClick={() => router.push("/library")}
+            className="
+                rounded-full
+                p-2
+                bg-white
+                flex
+                items-center
+                justify-center
+                hover:opacity-75
+                transition"
+          >
+            <TbPlaylist size={20} className="text-black" />
           </button>
         </div>
         <div className="flex justify-between items-center gap-x-4">
